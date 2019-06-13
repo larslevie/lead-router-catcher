@@ -1,10 +1,11 @@
 const Router = require("koa-router");
+const logger = require("./logger");
 
 const router = new Router();
 
 router.get("/healthz", ctx => (ctx.status = 204));
 router.post("/leads", ctx => {
-  console.log(ctx.request.body);
+  logger.info({ lead: ctx.request.body });
   ctx.status = 204;
 });
 
